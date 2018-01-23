@@ -1,10 +1,28 @@
-to register user:
+/register
 
 {
-    "type": "user",
-    "attributes": {
-        "email": "string",
-        "password": "string"
-    },
+  "email": "string",
+  "password": "string"
+}
 
+returns
+
+{
+  "num": int,
+  "jwt": "token"
+}
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+/getnum
+
+{
+  "jwt": "string",
+}
+
+returns
+{
+  "num": int
 }

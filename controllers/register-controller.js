@@ -2,6 +2,8 @@ var server = require('../server.js');
 
 module.exports.registerUser = function (request, response) {
 
+  // TODO verify email not already registered
+
   server.bcrypt.hash(request.body.password, 10, function(err, hash) {
 
     if (err) {
@@ -13,7 +15,7 @@ module.exports.registerUser = function (request, response) {
       console.log("returning token: " + token);
       response.json({
         num: 0,
-        token: token
+        jwt: token
       });
     }
 
@@ -21,8 +23,3 @@ module.exports.registerUser = function (request, response) {
 
 
 }
-
-
-
-
-  // TODO response
