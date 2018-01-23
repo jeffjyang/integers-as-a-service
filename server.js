@@ -1,15 +1,19 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const crypto = require('crypto');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
+const registerController = require('./controllers/register-controller.js')
 
 var port = 3000;
 
 var sqlite3 = require('sqlite3').verbose(); // why verbose
 var db = new sqlite3.Database('users.db');
 
-module.exports = db;
+module.exports.db = db;
+module.exports.bcrypt = bcrypt;
+module.exports.jwt = jwt;
 
 
 app.use(bodyParser.json());
@@ -21,3 +25,15 @@ app.listen(port, function(){
 
 // TODO compression?
 app.use(express.static('./public'));  // this sends clientside files
+
+
+app.post('/register', function(request, response){
+  console.log("New POST to register");
+  console.log("Email: " + request.body.email);
+
+  registerController.registerUser(request, response);
+});
+
+app.get('/getnum', function(request, response){
+
+});

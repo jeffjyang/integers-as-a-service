@@ -1,0 +1,10 @@
+to register user:
+
+{
+    "type": "user",
+    "attributes": {
+        "email": "string",
+        "password": "string"
+    },
+
+}
