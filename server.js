@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const registerController = require('./controllers/register-controller.js');
-const getNumController = require('./controllers/getnum-controller.js');
+const numController = require('./controllers/num-controller.js');
 const authenticateController = require('./controllers/authenticate.js');
 
 var port = 3000;
@@ -38,9 +38,13 @@ app.post('/register', function(request, response){
 });
 
 app.post('/getCurrentNum', authenticateController.authenticate, function(request, response){
-  getNumController.getCurrentNum(request,response);
+  numController.getCurrentNum(request,response);
 });
 
 app.post('/getNextNum', authenticateController.authenticate, function(request, response){
-  getNumController.getNextNum(request,response);
+  numController.getNextNum(request,response);
+});
+
+app.post('/setNum', authenticateController.authenticate, function(request, response){
+  numController.setNum(request,response);
 });

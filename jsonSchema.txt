@@ -19,10 +19,23 @@ returns
 /getnum
 
 {
-  "jwt": "string",
+  "jwt": "string"
 }
 
 returns
 {
+  "num": int
+}
+
+
+
+
+
+
+
+/setNum
+
+{
+  "jwt": "string",
   "num": int
 }
