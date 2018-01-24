@@ -10,7 +10,7 @@ const authenticateController = require('./controllers/authenticate.js');
 
 var port = 3000;
 
-var sqlite3 = require('sqlite3').verbose(); // why verbose
+var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('users.db');
 
 
@@ -37,14 +37,18 @@ app.post('/register', function(request, response){
   registerController.registerUser(request, response);
 });
 
-app.post('/getCurrentNum', authenticateController.authenticate, function(request, response){
+app.post('/login', authenticateController.authenticateLogin, function(request, response){
+  console.log("next executed")
+});
+
+app.post('/getCurrentNum', authenticateController.authenticateApi, function(request, response){
   numController.getCurrentNum(request,response);
 });
 
-app.post('/getNextNum', authenticateController.authenticate, function(request, response){
+app.post('/getNextNum', authenticateController.authenticateApi, function(request, response){
   numController.getNextNum(request,response);
 });
 
-app.post('/setNum', authenticateController.authenticate, function(request, response){
+app.post('/setNum', authenticateController.authenticateApi, function(request, response){
   numController.setNum(request,response);
 });

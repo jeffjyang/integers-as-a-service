@@ -39,3 +39,14 @@ returns
   "jwt": "string",
   "num": int
 }
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~
+
+/login
