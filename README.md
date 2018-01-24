@@ -16,13 +16,11 @@
         jwt VARCHAR(255));`
         - NOTE:
             - pwhash could have been declared as `CHAR(60)`
-            - JWT does not necessarily have to be stored in the database, and so
+            - JWT does not necessarily have to be stored in the database, so
              this column can be omitted
-
 
 - JSON Web Token (JWT)
     - JWT used as the API key
-
 
 - bcrypt
     - Used to hash user passwords
@@ -38,7 +36,7 @@
 - /login
     - Login a user
     - Method: POST
-    - TODO this endpoint is incomplete
+    - TODO reset password or show some stats? 
 - /getCurrentNum
     - Fetch the current number for a user
     - Method: POST
