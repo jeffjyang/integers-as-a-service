@@ -1,15 +1,37 @@
 var server = require('../server.js');
 
 
-module.exports.getNum = function (request, response) {
-
-  var email = request.decoded;
+module.exports.getCurrentNum = function (request, response) {
 
   server.db.all("SELECT num FROM users WHERE email = ?", request.decoded.email, function(err, rows) {
-    console.log(rows);
-    response.json(rows[0]); // TODO kinda a hack?
+    console.log(rows[0].num);
 
-    // TODO update num
+    response.json({"num": rows[0].num});
   });
 
+}
+
+
+
+
+
+module.exports.getNextNum = function (request, response) {
+
+  var email = request.decoded.email;
+
+  //
+  server.db.all("SELECT num FROM users WHERE email = ?", email, function(err, rows) {
+    var num = rows[0].num + 1;
+
+
+    server.db.run("UPDATE users SET num = ? WHERE email = ?", [num, email], function(err){
+      if (err) {
+        console.log(err.stack)
+      } else {
+        response.json({"num": num});
+      }
+    });
+
+
+  });
 }

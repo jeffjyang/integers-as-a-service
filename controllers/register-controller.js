@@ -14,8 +14,8 @@ module.exports.registerUser = function (request, response) {
       server.db.run("INSERT INTO users (email, pwhash, num, jwt) VALUES (?, ?, ?, ?)", request.body.email, hash, 0, token);
       console.log("returning token: " + token);
       response.json({
-        num: 0,
-        jwt: token
+        "num": 0,
+        "jwt": token
       });
     }
 

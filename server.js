@@ -37,6 +37,10 @@ app.post('/register', function(request, response){
   registerController.registerUser(request, response);
 });
 
-app.post('/api/getnum', authenticateController.authenticate, function(request, response){
-  getNumController.getNum(request,response);
+app.post('/getCurrentNum', authenticateController.authenticate, function(request, response){
+  getNumController.getCurrentNum(request,response);
+});
+
+app.post('/getNextNum', authenticateController.authenticate, function(request, response){
+  getNumController.getNextNum(request,response);
 });
